@@ -6,9 +6,9 @@ Code for paper
 General-Purpose Lipschitz Networks](). 
 <!--- TODO: Add Link --->
 It includes code for the layers we propose,
-[AOL-Dense](src/framework/achitectures/layers/aol/aol_dense.py)
+[AOL-Dense](src/aol_code/layers/aol/aol_dense.py)
 and
-[AOL-Conv2D](src/framework/achitectures/layers/aol/aol_conv2d.py)
+[AOL-Conv2D](src/aol_code/layers/aol/aol_conv2d.py)
 as well as code for models, our proposed loss function
 and metrics.
 
@@ -44,10 +44,11 @@ Run-IDs correspond to the following settings:
 
 
 ## Results
-The code generates results slightly better than reported in the paper.
-(This is because of using ConcatenationPooling instead of strided convolutions.)
+The results for Cifar10 and Cifar100 can be found
+in the tables below.
 We report the standard accuracy (Std Acc) as well as the
-Certified Robust Accuracy (CRA) for different amounts of input perturbation.
+Certified Robust Accuracy (CRA) for different amounts of 
+input perturbations. 
 
 | CIFAR 10   |   Std Acc | CRA 36/255 | CRA 72/255 | CRA 108/255 | CRA 1 |
 |:-----------|----------:|-----------:|-----------:|------------:|------:|
@@ -59,9 +60,9 @@ Results on CIFAR100:
 
 | CIFAR 100  | Std Acc | CRA 36/255 | CRA 72/255 | CRA 108/255 | CRA 1 |
 |:-----------|--------:|-----------:|-----------:|------------:|------:|
-| AOL-Small  |   56.1% |      47.3% |      39.1% |       31.7% | 11.2% |
-| AOL-Medium |   57.8% |      48.2% |      39.8% |       32.1% | 11.1% |
-| AOL-Large  |   57.4% |      48.3% |      39.3% |       31.7% | 10.6% |
+| AOL-Small  |   42.4% |      32.5% |      24.8% |       19.2% |  6.7% |
+| AOL-Medium |   43.2% |      33.7% |      26.0% |       20.2% |  7.2% |
+| AOL-Large  |   43.7% |      33.7% |      26.3% |       20.7% |  7.8% |
 
 ### Ablation Studies
 We also report the results for the two ablation studies.
@@ -79,18 +80,22 @@ The results are in the table below.
 | 16 $\sqrt{2}$ |   48.5% |      45.4% |      42.4% |       39.7% | 29.0% |
 
 We also report the results for different models,
-a network consisting purely of fully-connected layers (AOL-FC),
-a convolutional networks that keeps the number of activations
-constant for the first few layers (AOL-Conv)
-as well as a relatively standard convolutional achitecture,
-where the number of channels is multiplied by 2 whenever the resolutions
-decreases (AOL-STD):
+including a network that consisting purely of fully-connected 
+layers (AOL-FC),
+a relatively standard convolutional achitecture where the 
+number of channels is multiplied by 2 whenever the resolutions
+decreases (AOL-STD),
+as well as
+a convolutional networks that multiplies the number of channels
+by 4 whenever the spatial resolution is decreases in order to
+keep the number of activations constant for the first few layers 
+(AOL-Conv):
 
-| CIFAR 10 | Std Acc | CRA 36/255 | CRA 72/255 | CRA 108/255 | CRA 1 |
-|:---------|--------:|-----------:|-----------:|------------:|------:|
-| AOL-FC   |   62.4% |      52.7% |      43.8% |       35.2% | 12.1% |
-| AOL-Conv |   68.6% |      60.6% |      53.1% |       45.4% | 20.3% |
-| AOL-STD  |   61.7% |      52.3% |      42.7% |       34.7% | 11.1% |
+| CIFAR 10 | Std Acc |    CRA 36/255 | CRA 72/255 | CRA 108/255 | CRA 1 |
+|:---------|--------:|--------------:|-----------:|------------:|------:|
+| AOL-FC   |   67.1% |         58.5% |      50.3% |       42.4% | 17.6% |
+| AOL-STD  |   65.4% |         56.9% |      48.3% |       40.5% | 16.2% |
+| AOL-Conv |   68.5% |         60.2% |      52.3% |       45.2% | 19.5% |
 
 ## Citations
 
