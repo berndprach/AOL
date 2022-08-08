@@ -3,8 +3,7 @@
 
 Code for paper 
 [Almost-Orthogonal Layers for Efficient
-General-Purpose Lipschitz Networks](). 
-<!--- TODO: Add Link --->
+General-Purpose Lipschitz Networks](https://arxiv.org/abs/2208.03160). 
 It includes code for the layers we propose,
 [AOL-Dense](src/aol_code/layers/aol/aol_dense.py)
 and
