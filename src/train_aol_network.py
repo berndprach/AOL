@@ -68,10 +68,9 @@ history = model.fit(
 )
 loc.print_pro("Finished training! Got the following results:", with_time=True)
 for metric_name, metric_history in history.history.items():
-    if not metric_name.startswith("val_"): continue
-    metric_name = metric_name.replace("val_", "Validation ")
-    if metric_name.startswith("acc") or metric_name.startswith("cra"):
+    if metric_name.startswith("val_acc") or metric_name.startswith("val_cra"):
         result = metric_history[-1]
+        metric_name = metric_name.replace("val_", "Validation ")
         loc.print_pro(f"{metric_name.title()}: {100 * result:.1f}%")
 
 loc.print_pro(f"Find outputs in folder {loc.outfolder_name}.")
